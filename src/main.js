@@ -1,6 +1,7 @@
 import { welcome } from './template'
 import inquirer from 'inquirer'
-import { reset, options } from './utils'
+import { options } from './options'
+import { reset } from './util'
 
 export function main() {
 	const chalk = require('chalk')

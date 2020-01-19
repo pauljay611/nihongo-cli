@@ -1,27 +1,6 @@
-import inquirer from 'inquirer'
 import { hiraganaTemplate, katakanaTemplate, rows } from './template'
-export const reset = () => {
-	process.stdout.write('\x1bc')
-}
-
-export const list = (name, message, choices) => {
-	return {
-		type: 'list',
-		name,
-		message,
-		choices: [
-			new inquirer.Separator(),
-			...choices,
-			new inquirer.Separator(),
-			{ name: 'Exit', value: 'exit' }
-		]
-	}
-}
-
-export const prompt = message => {
-	reset()
-	return inquirer.prompt(message)
-}
+import { prompt, list } from './util'
+import { testing } from './testing'
 
 export const options = {
 	menu() {
@@ -98,7 +77,25 @@ export const options = {
 			.then(async function(answer) {})
 			.catch(error => console.log(error))
 	},
-	test() {},
+	test() {
+		prompt([
+			list('Testing', 'Testing', [
+				{ name: 'Hiragana', value: 'hiragana' },
+				{ name: 'Katakana', value: 'katakana' },
+				{ name: 'N5', value: 'n5' },
+				{ name: 'N4', value: 'n4' },
+				{ name: 'N3', value: 'n3' },
+				{ name: 'N2', value: 'n2' },
+				{ name: 'N1', value: 'n1' },
+				{ name: 'Return', value: 'return' }
+			])
+		])
+			.then(async function(answer) {
+				console.log(answer)
+				testing[answer.Testing](10)
+			})
+			.catch(error => console.log(error))
+	},
 	record() {},
 	return(option) {
 		options[option]()
@@ -107,9 +104,4 @@ export const options = {
 		console.log('Good bye~')
 		process.stdin.pause()
 	}
-}
-
-export const charactersTable = {
-	hiragana: hiraganaTemplate,
-	katakana: katakanaTemplate
 }

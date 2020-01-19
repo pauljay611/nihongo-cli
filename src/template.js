@@ -10,8 +10,8 @@ export const welcome = `
 `
 export const rows = '  |  a  |  e |  i |  o | u  |'
 const column = 'AKSTNHMYRWN'
-const hiraganaLetters = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや－ゆ－よらりるれろわ－－－をん`
-const katakanaLetters = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤ－ユ－ヨラリルレロワ－－－－ン`
+export const hiraganaLetters = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや－ゆ－よらりるれろわ－－－をん`
+export const katakanaLetters = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤ－ユ－ヨラリルレロワ－－－－ン`
 
 function lettersTemplate(table) {
 	return table
