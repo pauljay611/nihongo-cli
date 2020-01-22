@@ -20,7 +20,7 @@ import {
 import { options } from './options'
 export const testing = {
 	hiragana(number) {
-		const questionsList = questions(number, 'hiragana', 'characters').map(
+		const questionsList = questions(number, 'hiragana1', 'characters').map(
 			(question, index) => {
 				return input(`Test${index + 1}`, question)
 			}
