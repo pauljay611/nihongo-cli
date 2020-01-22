@@ -10,20 +10,63 @@
  *  字母: 英文
  *  英文: 字母選擇
  */
-import { hiraganaLetters, katakanaLetters } from './template'
+import inquirer from 'inquirer'
 import { prompt, input } from './util'
-
+import {
+	hiraganaLettersTable,
+	katakanaLettersTable,
+	engLetters
+} from './template'
+import { options } from './options'
 export const testing = {
 	hiragana(number) {
 		const questionsList = questions(number, 'hiragana', 'characters').map(
-			question => {
-				return input('Test', question)
+			(question, index) => {
+				return input(`Test${index + 1}`, question)
 			}
 		)
-		console.log(questionsList)
 		prompt(questionsList)
-			.then(async function(answer) {
-				console.log(answer)
+			.then(async function(answers) {
+				const yourAnswers = Object.values(answers)
+				const answerList = questionsList.map((question, index) => {
+					const letterIndex = hiraganaLettersTable.indexOf(
+						question.message
+					)
+
+					return {
+						yourAnswer: yourAnswers[index],
+						answer: engLetters[letterIndex],
+						result:
+							yourAnswers[index] === engLetters[letterIndex]
+								? 'right'
+								: 'wrong'
+					}
+				})
+				let correct = 0
+				answerList.forEach(answer => {
+					console.log(
+						`Your Answer: ${answer.yourAnswer}\n Answer is: ${answer.answer}\n ${answer.result}`
+					)
+					if (answer.result === 'right') correct++
+				})
+				console.log(`Total: ${correct} / ${answerList.length}`)
+			})
+			.then(() => {
+				inquirer
+					.prompt([
+						{
+							type: 'confirm',
+							name: 'Continue',
+							message: 'Continue testing?'
+						}
+					])
+					.then(answer => {
+						if (answer.Continue) {
+							options.test()
+						} else {
+							options.exit()
+						}
+					})
 			})
 			.catch(error => console.log(error))
 	},
@@ -36,9 +79,9 @@ export const testing = {
 }
 const testType = {
 	characters(table) {
-		const number = Math.floor(Math.random() * 50)
-		if (table === 'hiragana') return hiraganaLetters[number]
-		if (table === 'katakana') return katakanaLetters[number]
+		const number = Math.floor(Math.random() * 45)
+		if (table === 'hiragana') return hiraganaLettersTable[number]
+		if (table === 'katakana') return katakanaLettersTable[number]
 	}
 }
 

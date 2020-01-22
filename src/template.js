@@ -11,7 +11,7 @@ export const welcome = `
 export const rows = '  |  a  |  e |  i |  o | u  |'
 const column = 'AKSTNHMYRWN'
 export const hiraganaLetters = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや－ゆ－よらりるれろわ－－－をん`
-export const katakanaLetters = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤ－ユ－ヨラリルレロワ－－－－ン`
+export const katakanaLetters = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤ－ユ－ヨラリルレロワ－－－ヲン`
 
 function lettersTemplate(table) {
 	return table
@@ -31,3 +31,54 @@ function lettersTemplate(table) {
 export const hiraganaTemplate = lettersTemplate(hiraganaLetters)
 
 export const katakanaTemplate = lettersTemplate(katakanaLetters)
+
+export const hiraganaLettersTable = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん`
+export const katakanaLettersTable = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン`
+export const engLetters = [
+	'a',
+	'i',
+	'u',
+	'e',
+	'o',
+	'sa',
+	'si',
+	'su',
+	'se',
+	'so',
+	'ka',
+	'ki',
+	'ku',
+	'ke',
+	'ko',
+	'ta',
+	'ti',
+	'tu',
+	'te',
+	'to',
+	'na',
+	'ni',
+	'nu',
+	'ne',
+	'no',
+	'ha',
+	'hi',
+	'hu',
+	'he',
+	'ho',
+	'ma',
+	'mi',
+	'mu',
+	'me',
+	'mo',
+	'ya',
+	'yu',
+	'yo',
+	'ra',
+	'ri',
+	'ru',
+	're',
+	'ro',
+	'wa',
+	'wo',
+	'n'
+]
