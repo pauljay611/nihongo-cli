@@ -92,7 +92,7 @@ export const options = {
 		])
 			.then(async function(answer) {
 				console.log(answer)
-				testing[answer.Testing](10)
+				testing.questionType(answer.Testing)
 			})
 			.catch(error => console.log(error))
 	},
