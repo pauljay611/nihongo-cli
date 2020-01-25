@@ -74,7 +74,7 @@ export const options = {
 				{ name: 'Return', value: 'return' }
 			])
 		])
-			.then(async function(answer) {})
+			.then(async function() {})
 			.catch(error => console.log(error))
 	},
 	test() {
@@ -92,7 +92,7 @@ export const options = {
 		])
 			.then(async function(answer) {
 				console.log(answer)
-				testing.questionType(answer.Testing)
+				testing[answer.Testing]()
 			})
 			.catch(error => console.log(error))
 	},
