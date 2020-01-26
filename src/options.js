@@ -1,25 +1,9 @@
-import { hiraganaTemplate, katakanaTemplate, rows } from './template'
 import { prompt, list } from './util'
 import { testing } from './testing'
+import { exercise } from './exercise'
+import { menu } from './menu'
 
 export const options = {
-	menu() {
-		prompt([
-			list('Menu', 'Choose your lesson', [
-				{
-					name: 'Start your exercise',
-					value: 'exercise'
-				},
-				{ name: 'Testing', value: 'test' },
-				{ name: 'Record', value: 'record' }
-			])
-		])
-			.then(async function(answer) {
-				console.log(options[answer.Menu])
-				options[answer.Menu]()
-			})
-			.catch(error => console.log(error))
-	},
 	exercise() {
 		prompt([
 			list('Exercise', 'Exercise', [
@@ -32,49 +16,12 @@ export const options = {
 			])
 		])
 			.then(async function(answer) {
-				options[answer.Exercise]('menu')
+				if (answer.Exercise === 'return') {
+					menu.menu()
+					return
+				}
+				exercise[answer.Exercise]()
 			})
-			.catch(error => console.log(error))
-	},
-	charactersTable() {
-		prompt([
-			list('CharactersTable', 'CharactersTable', [
-				{ name: 'Hiragana', value: 'hiragana' },
-				{ name: 'Katakana', value: 'katakana' },
-				{ name: 'Return', value: 'return' }
-			])
-		])
-			.then(async function(answer) {
-				if (answer.CharactersTable === 'hiragana') {
-					console.log('-----------------------------')
-					console.log(rows)
-					console.log(hiraganaTemplate)
-					console.log('-----------------------------')
-				}
-				if (answer.CharactersTable === 'katakana') {
-					console.log('-----------------------------')
-					console.log(rows)
-					console.log(katakanaTemplate)
-					console.log('-----------------------------')
-				}
-				if (answer.CharactersTable === 'return') {
-					options[answer.CharactersTable]('exercise')
-				}
-			})
-			.catch(error => console.log(error))
-	},
-	words() {
-		prompt([
-			list('Words', 'Words', [
-				{ name: 'N5', value: 'n5' },
-				{ name: 'N4', value: 'n4' },
-				{ name: 'N3', value: 'n3' },
-				{ name: 'N2', value: 'n2' },
-				{ name: 'N1', value: 'n1' },
-				{ name: 'Return', value: 'return' }
-			])
-		])
-			.then(async function() {})
 			.catch(error => console.log(error))
 	},
 	test() {
@@ -91,15 +38,15 @@ export const options = {
 			])
 		])
 			.then(async function(answer) {
-				console.log(answer)
+				if (answer.Testing === 'return') {
+					menu.menu()
+					return
+				}
 				testing[answer.Testing]()
 			})
 			.catch(error => console.log(error))
 	},
 	record() {},
-	return(option) {
-		options[option]()
-	},
 	exit() {
 		console.log('Good bye~')
 		process.stdin.pause()

@@ -2,6 +2,7 @@ import { welcome } from './template'
 import inquirer from 'inquirer'
 import { options } from './options'
 import { reset } from './util'
+import { menu } from './menu'
 
 export function main() {
 	const chalk = require('chalk')
@@ -21,6 +22,6 @@ export function main() {
 				options.exit()
 				return
 			}
-			options.menu()
+			menu.menu()
 		})
 }
