@@ -4,8 +4,8 @@ import { exercise } from './exercise'
 import { menu } from './menu'
 
 export const options = {
-	exercise() {
-		prompt([
+	async exercise() {
+		const exerciseAns = await prompt([
 			list('Exercise', 'Exercise', [
 				{
 					name: '50 Characters Table',
@@ -15,17 +15,14 @@ export const options = {
 				{ name: 'Return', value: 'return' }
 			])
 		])
-			.then(async function(answer) {
-				if (answer.Exercise === 'return') {
-					menu.menu()
-					return
-				}
-				exercise[answer.Exercise]()
-			})
-			.catch(error => console.log(error))
+		if (exerciseAns.Exercise === 'return') {
+			menu.menu()
+			return
+		}
+		exercise[exerciseAns.Exercise]()
 	},
-	test() {
-		prompt([
+	async test() {
+		const testingAns = await prompt([
 			list('Testing', 'Testing', [
 				{ name: 'Hiragana', value: 'hiragana' },
 				{ name: 'Katakana', value: 'katakana' },
@@ -37,14 +34,11 @@ export const options = {
 				{ name: 'Return', value: 'return' }
 			])
 		])
-			.then(async function(answer) {
-				if (answer.Testing === 'return') {
-					menu.menu()
-					return
-				}
-				testing[answer.Testing]()
-			})
-			.catch(error => console.log(error))
+		if (testingAns.Testing === 'return') {
+			menu.menu()
+			return
+		}
+		testing[testingAns.Testing]()
 	},
 	record() {},
 	exit() {

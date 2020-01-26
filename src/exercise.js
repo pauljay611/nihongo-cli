@@ -1,37 +1,35 @@
 import { hiraganaTemplate, katakanaTemplate, rows } from './template'
 import { prompt, list } from './util'
 import { options } from './options'
+import { words } from './words'
 
 export const exercise = {
-	charactersTable() {
-		prompt([
+	async charactersTable() {
+		const charactersTableAns = await prompt([
 			list('CharactersTable', 'CharactersTable', [
 				{ name: 'Hiragana', value: 'hiragana' },
 				{ name: 'Katakana', value: 'katakana' },
 				{ name: 'Return', value: 'return' }
 			])
 		])
-			.then(async function(answer) {
-				if (answer.CharactersTable === 'hiragana') {
-					console.log('-----------------------------')
-					console.log(rows)
-					console.log(hiraganaTemplate)
-					console.log('-----------------------------')
-				}
-				if (answer.CharactersTable === 'katakana') {
-					console.log('-----------------------------')
-					console.log(rows)
-					console.log(katakanaTemplate)
-					console.log('-----------------------------')
-				}
-				if (answer.CharactersTable === 'return') {
-					options.exercise()
-				}
-			})
-			.catch(error => console.log(error))
+		if (charactersTableAns.CharactersTable === 'hiragana') {
+			console.log('-----------------------------')
+			console.log(rows)
+			console.log(hiraganaTemplate)
+			console.log('-----------------------------')
+		}
+		if (charactersTableAns.CharactersTable === 'katakana') {
+			console.log('-----------------------------')
+			console.log(rows)
+			console.log(katakanaTemplate)
+			console.log('-----------------------------')
+		}
+		if (charactersTableAns.CharactersTable === 'return') {
+			options.exercise()
+		}
 	},
-	words() {
-		prompt([
+	async words() {
+		const wordsAns = await prompt([
 			list('Words', 'Words', [
 				{ name: 'N5', value: 'n5' },
 				{ name: 'N4', value: 'n4' },
@@ -41,7 +39,10 @@ export const exercise = {
 				{ name: 'Return', value: 'return' }
 			])
 		])
-			.then(async function() {})
-			.catch(error => console.log(error))
+		if (wordsAns.Words === 'return') {
+			options.exercise()
+			return
+		}
+		words(wordsAns.Words)
 	}
 }

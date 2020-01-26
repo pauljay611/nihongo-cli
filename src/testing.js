@@ -42,7 +42,7 @@ const testType = {
 }
 
 const characters50Test = (type, table) => {
-	var prompts = new Subject()
+	let prompts = new Subject()
 	let index = 0
 	let wrong = 0
 	let right = 0

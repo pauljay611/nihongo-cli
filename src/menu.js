@@ -2,8 +2,8 @@ import { prompt, list } from './util'
 import { options } from './options'
 
 export const menu = {
-	menu() {
-		prompt([
+	async menu() {
+		const menuAns = await prompt([
 			list('Menu', 'Choose your lesson', [
 				{
 					name: 'Start your exercise',
@@ -13,9 +13,6 @@ export const menu = {
 				{ name: 'Record', value: 'record' }
 			])
 		])
-			.then(async function(answer) {
-				options[answer.Menu]()
-			})
-			.catch(error => console.log(error))
+		options[menuAns.Menu]()
 	}
 }
