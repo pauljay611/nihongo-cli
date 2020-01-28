@@ -10,7 +10,11 @@ export const words = async level => {
 
 const showWords = async (level, page) => {
 	const words = await jpltApi(level, page)
-	console.log(words.data)
+	words.data.forEach(word => {
+		console.log(
+			`Word: ${word.slug} (${word.japanese[0].reading}) Definition: ${word.senses[0].english_definitions}`
+		)
+	})
 	let prompts = new Subject()
 	inquirer.prompt(prompts).ui.process.subscribe(
 		async ans => {
