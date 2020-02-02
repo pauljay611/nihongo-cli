@@ -6,12 +6,7 @@ const api = axios.create({
 })
 
 export const jpltApi = (level, page) => {
-	return api
-		.get(`words?keyword=%23jlpt-${level}&page=${page}`)
-		.then(data => {
-			return data.data
-		})
-		.catch(err => {
-			console.log(err)
-		})
+	return api.get(`words?keyword=%23jlpt-${level}&page=${page}`).then(data => {
+		return data.data
+	})
 }

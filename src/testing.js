@@ -11,6 +11,7 @@
  *  英文: 字母選擇
  */
 import inquirer from 'inquirer'
+import { Subject } from 'rxjs'
 import { input } from './util'
 import {
 	hiraganaLettersTable,
@@ -18,7 +19,7 @@ import {
 	engLetters
 } from './template'
 import { options } from './options'
-import { Subject } from 'rxjs'
+import { jpltApi } from './api'
 
 export const testing = {
 	hiragana() {
@@ -27,11 +28,21 @@ export const testing = {
 	katakana() {
 		characters50Test('katakana', katakanaLettersTable)
 	},
-	n5() {},
-	n4() {},
-	n3() {},
-	n2() {},
-	n1() {}
+	n5() {
+		jlptTest('n5')
+	},
+	n4() {
+		jlptTest('n4')
+	},
+	n3() {
+		jlptTest('n3')
+	},
+	n2() {
+		jlptTest('n2')
+	},
+	n1() {
+		jlptTest('n1')
+	}
 }
 const testType = {
 	characters(table) {
@@ -39,7 +50,19 @@ const testType = {
 		if (table === 'hiragana') return hiraganaLettersTable[number]
 		if (table === 'katakana') return katakanaLettersTable[number]
 	},
-	jlpt(level) {}
+	async jlpt(level) {
+		const number = Math.floor(Math.random() * 19)
+		const page = Math.floor(Math.random() * 33 + 1)
+		const words = await jpltApi(level, page)
+		if (words === undefined || words.data.length === 0) {
+			await testType.jlpt(level)
+		} else {
+			return {
+				question: words.data[number].senses[0].english_definitions,
+				answer: words.data[number].japanese
+			}
+		}
+	}
 }
 
 const characters50Test = (type, table) => {
@@ -79,7 +102,41 @@ const characters50Test = (type, table) => {
 	prompts.next(input(`Test${index + 1}`, question))
 }
 
-const jlptTest = () => {}
+const jlptTest = async level => {
+	const prompts = new Subject()
+	let wrong = 0
+	let right = 0
+	let index = 0
+	let question = await testType.jlpt(level)
+	inquirer.prompt(prompts).ui.process.subscribe(
+		async ans => {
+			let result = ''
+			if (ans.answer === question.answer[0].reading) {
+				result = 'right'
+				right++
+			} else {
+				wrong++
+			}
+			console.log(
+				`Your Answer: ${ans.answer} Answer is: ${question.answer[0].reading} ${result} Wrong: ${wrong} / 3 Right: ${right}`
+			)
+			if (wrong === 3) {
+				console.log(
+					`Total: ${right} / ${index + 1} Your score ${right * 100}`
+				)
+				continueTesting()
+			} else {
+				index++
+				question = await testType.jlpt(level)
+				prompts.next(input(`Test${index + 1}`, question.question))
+			}
+		},
+		err => {
+			console.log(err)
+		}
+	)
+	prompts.next(input(`Test${index + 1}`, question.question))
+}
 
 const continueTesting = () => {
 	inquirer
