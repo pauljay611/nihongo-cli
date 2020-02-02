@@ -38,7 +38,8 @@ const testType = {
 		const number = Math.floor(Math.random() * 45)
 		if (table === 'hiragana') return hiraganaLettersTable[number]
 		if (table === 'katakana') return katakanaLettersTable[number]
-	}
+	},
+	jlpt(level) {}
 }
 
 const characters50Test = (type, table) => {
@@ -77,6 +78,8 @@ const characters50Test = (type, table) => {
 	)
 	prompts.next(input(`Test${index + 1}`, question))
 }
+
+const jlptTest = () => {}
 
 const continueTesting = () => {
 	inquirer
