@@ -51,7 +51,7 @@ export const engLetters = [
 	'se',
 	'so',
 	'ta',
-	'ti',
+	'chi',
 	'tu',
 	'te',
 	'to',

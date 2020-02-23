@@ -7,8 +7,13 @@
  */
 
 /** 50音考法
- *  字母: 英文
- *  英文: 字母選擇
+ *  字母: 平假片假
+ *  輸入: 英文
+ */
+
+/** jlpt 考法
+ *  單字: 英文
+ *  輸入: 平假名
  */
 import inquirer from 'inquirer'
 import { Subject } from 'rxjs'
