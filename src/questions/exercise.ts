@@ -1,5 +1,5 @@
-import { hiraganaTemplate, katakanaTemplate, rows } from './template'
-import { prompt, list } from './util'
+import { hiraganaTemplate, katakanaTemplate, rows } from '../templates'
+import { prompt, list } from '../utils'
 import { options } from './options'
 import { words } from './words'
 
@@ -27,6 +27,7 @@ export const exercise = {
 		if (charactersTableAns.CharactersTable === 'return') {
 			options.exercise()
 		}
+		return
 	},
 	async words() {
 		const wordsAns = await prompt([

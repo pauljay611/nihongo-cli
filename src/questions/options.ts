@@ -1,4 +1,4 @@
-import { prompt, list } from './util'
+import { prompt, list } from '../utils'
 import { testing } from './testing'
 import { exercise } from './exercise'
 import { menu } from './menu'
@@ -40,9 +40,5 @@ export const options = {
 		}
 		testing[testingAns.Testing]()
 	},
-	record() {},
-	exit() {
-		console.log('Good bye~')
-		process.stdin.pause()
-	}
+	record() { },
 }

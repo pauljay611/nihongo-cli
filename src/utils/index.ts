@@ -1,10 +1,16 @@
 import inquirer from 'inquirer'
+import { QuestionName } from '../types'
 
 export const reset = () => {
 	process.stdout.write('\x1bc')
 }
 
-export const prompt = message => {
+export const exit = () => {
+	console.log('Good bye~')
+	process.stdin.pause()
+}
+
+export const prompt = (message) => {
 	reset()
 	return inquirer.prompt(message)
 }

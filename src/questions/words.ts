@@ -1,7 +1,7 @@
 import inquirer from 'inquirer'
 import { Subject } from 'rxjs'
-import { jpltApi } from './api'
-import { prompt, list, input } from './util'
+import { jpltApi } from '../services/api'
+import { prompt, list, input } from '../utils'
 import { exercise } from './exercise'
 
 export const words = async level => {

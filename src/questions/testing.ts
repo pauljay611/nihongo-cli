@@ -17,14 +17,14 @@
  */
 import inquirer from 'inquirer'
 import { Subject } from 'rxjs'
-import { input } from './util'
+import { input } from '../utils'
 import {
 	hiraganaLettersTable,
 	katakanaLettersTable,
 	engLetters
-} from './template'
+} from '../templates'
 import { options } from './options'
-import { jpltApi } from './api'
+import { jpltApi } from '../services/api'
 
 export const testing = {
 	hiragana() {
