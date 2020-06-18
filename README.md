@@ -2,11 +2,8 @@
     Nihongo CLI
 </h1>
 <p align="center">
-    A japanese practicing tool in command line interface. Starting to learn japanese for yourself!
+    A japanese learning tool in command line interface. Starting to learn japanese for yourself!
 </p>
-<h2 align="center" style="color:red">
-    NOT SAFE FOR WORK 
-</h2>
 
 ## Feature
 

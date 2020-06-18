@@ -10,12 +10,12 @@ export const exit = () => {
 	process.stdin.pause()
 }
 
-export const prompt = (message) => {
+export const prompt = (message: inquirer.QuestionCollection) => {
 	reset()
 	return inquirer.prompt(message)
 }
 
-export const list = (name, message, choices) => {
+export const list = (name: string, message: string, choices: { name: string, value: QuestionName }[]) => {
 	return {
 		type: 'list',
 		name,
@@ -29,7 +29,7 @@ export const list = (name, message, choices) => {
 	}
 }
 
-export const input = (name, message) => {
+export const input = (name: string, message: string) => {
 	return {
 		type: 'input',
 		name,

@@ -3,4 +3,4 @@
 
 // eslint-disable-next-line no-global-assign
 require = require("esm")(module /*, options*/);
-require("../src/index.js").cli(process.arg);
+require("../lib/index.js").cli(process.arg);

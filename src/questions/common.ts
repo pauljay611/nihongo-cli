@@ -9,17 +9,13 @@ export class OpeningQuestion implements IQuestion {
     constructor() {
         this.name = QuestionName.Opening
     }
-    async question() {
+    question() {
         console.log(chalk.blue(welcome));
 
-        const ans = await inquirer
-            .prompt([
-                {
-                    type: "confirm",
-                    name: "Start",
-                    message: "Start your japanese journey",
-                },
-            ]);
-        return ans.Start as QuestionName
+        return {
+            type: "confirm",
+            name: "Start",
+            message: "Start your japanese journey",
+        }
     }
 }

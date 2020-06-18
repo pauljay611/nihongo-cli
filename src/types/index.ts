@@ -1,24 +1,21 @@
+import inquirer = require('inquirer');
+
 export interface IQuestion {
     name: QuestionName;
-    question(): QuestionName;
+    question(): any;
 }
 
 export enum QuestionName {
     Opening = 'Opening',
-    MainMenu = 'MainMenu',
-    Excercise = 'Excercise',
-    Testing = 'Testing',
-    Record = 'Record',
-    CharactersTable = 'CharactersTable',
-    Words = 'Words',
-    Hiragana = 'Hiragana',
-    Katakana = 'Katakana',
-    N5 = 'N5',
-    N4 = 'N4',
-    N3 = 'N3',
-    N2 = 'N2',
-    N1 = 'N1',
-    Return = 'return'
+    MainMenu = "MainMenu"
+    // Katakana = 'Katakana',
+    // N5 = 'N5',
+    // N4 = 'N4',
+    // N3 = 'N3',
+    // N2 = 'N2',
+    // N1 = 'N1',
+    // Return = 'Return',
+    // Exit = 'Exit'
 }
 
 export type Prompt = {
