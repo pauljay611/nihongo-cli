@@ -1,11 +1,11 @@
 import inquirer from 'inquirer'
-import { QuestionName } from '../types'
+import { QuestionName, Answer, Choices, HistoryName } from '../types'
 
 export const reset = () => {
 	process.stdout.write('\x1bc')
 }
 
-export const exit = () => {
+export const exit = () => () => {
 	console.log('Good bye~')
 	process.stdin.pause()
 }
@@ -15,7 +15,7 @@ export const prompt = (message: inquirer.QuestionCollection) => {
 	return inquirer.prompt(message)
 }
 
-export const list = (name: string, message: string, choices: { name: string, value: QuestionName }[]) => {
+export const list = (name: string, message: string, choices: Choices[]): Answer => {
 	return {
 		type: 'list',
 		name,
@@ -24,7 +24,7 @@ export const list = (name: string, message: string, choices: { name: string, val
 			new inquirer.Separator(),
 			...choices,
 			new inquirer.Separator(),
-			{ name: 'Exit', value: 'exit' }
+			{ name: 'Exit', value: HistoryName.Exit } as Choices
 		]
 	}
 }

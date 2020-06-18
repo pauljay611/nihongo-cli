@@ -1,4 +1,4 @@
-import { QuestionHandler } from '../lib/questionHandler'
+import { QuestionHandler } from '../lib'
 
 export class Main {
   static init() {

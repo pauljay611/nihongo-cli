@@ -1,7 +1,7 @@
 import { prompt, list } from '../utils'
-import { IQuestion, QuestionName, Prompt } from '../types'
+import { IQuestion, QuestionName, Prompt, HistoryName } from '../types'
 import { reset, exit } from "../utils";
-import { QuestionHandler } from '../lib/questionHandler';
+import { QuestionHandler } from '../lib';
 import { welcome } from "../templates";
 
 export class MenuQuestion implements IQuestion {
@@ -10,17 +10,15 @@ export class MenuQuestion implements IQuestion {
 	constructor() {
 		this.name = QuestionName.MainMenu
 	}
-	async question() {
-		const menuAns = await prompt([
-			list(this.name, 'Choose your lesson', [
-				// {
-				// 	name: 'Start your exercise',
-				// 	value: QuestionName.Excercise
-				// },
-				// { name: 'Testing', value: QuestionName.Testing },
-				// { name: 'Record', value: QuestionName.Record }
-			])
+	question() {
+		return list(this.name, 'Choose your lesson', [
+			// {
+			// 	name: 'Start your exercise',
+			// 	value: QuestionName.Excercise
+			// },
+			// { name: 'Testing', value: QuestionName.Testing },
+			// { name: 'Record', value: QuestionName.Record },
+			{ name: HistoryName.Return, value: HistoryName.Return }
 		])
-		return menuAns[this.name] as QuestionName
 	}
 }
