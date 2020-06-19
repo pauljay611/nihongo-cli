@@ -1,7 +1,7 @@
 import { prompt, list } from '../utils'
-import { IQuestion, QuestionName, Prompt, HistoryName } from '../types'
+import { IQuestion, QuestionName, HistoryName } from '../types'
 import { reset, exit } from "../utils";
-import { QuestionHandler } from '../lib';
+import { QuestionHandler } from '.';
 import { welcome } from "../templates";
 
 export class MenuQuestion implements IQuestion {

@@ -33,6 +33,6 @@ export enum HistoryName {
     Exit = 'Exit'
 }
 
-export type Prompt = {
-    [name in QuestionName]: QuestionName
+export type QuestionList = {
+    [name in QuestionName]: IQuestion;
 }

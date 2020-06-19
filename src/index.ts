@@ -1,5 +1,5 @@
-import { Main } from './questions'
+import { QuestionHandler } from './lib'
 
 export async function cli() {
-	await Main.init()
+	new QuestionHandler()
 }

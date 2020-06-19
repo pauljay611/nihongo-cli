@@ -12,7 +12,7 @@ export class OpeningQuestion implements IQuestion {
 
         return {
             type: "confirm",
-            name: "Start",
+            name: QuestionName.Opening,
             message: "Start your japanese journey",
         }
     }

@@ -1,11 +1,11 @@
 import inquirer from 'inquirer'
-import { QuestionName, Answer, Choices, HistoryName } from '../types'
+import { Answer, Choices, HistoryName } from '../types'
 
 export const reset = () => {
 	process.stdout.write('\x1bc')
 }
 
-export const exit = () => () => {
+export const exit = () => {
 	console.log('Good bye~')
 	process.stdin.pause()
 }
