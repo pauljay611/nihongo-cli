@@ -1,49 +1,35 @@
-// import { hiraganaTemplate, katakanaTemplate, rows } from '../templates'
-// import { prompt, list } from '../utils'
-// import { options } from './options'
-// import { words } from './words'
+import { IQuestion, QuestionName, HistoryName } from '../types'
+import { list } from '../utils';
 
-// export const exercise = {
-// 	async charactersTable() {
-// 		const charactersTableAns = await prompt([
-// 			list('CharactersTable', 'CharactersTable', [
-// 				{ name: 'Hiragana', value: 'hiragana' },
-// 				{ name: 'Katakana', value: 'katakana' },
-// 				{ name: 'Return', value: 'return' }
-// 			])
-// 		])
-// 		if (charactersTableAns.CharactersTable === 'hiragana') {
-// 			console.log('-----------------------------')
-// 			console.log(rows)
-// 			console.log(hiraganaTemplate)
-// 			console.log('-----------------------------')
-// 		}
-// 		if (charactersTableAns.CharactersTable === 'katakana') {
-// 			console.log('-----------------------------')
-// 			console.log(rows)
-// 			console.log(katakanaTemplate)
-// 			console.log('-----------------------------')
-// 		}
-// 		if (charactersTableAns.CharactersTable === 'return') {
-// 			options.exercise()
-// 		}
-// 		return
-// 	},
-// 	async words() {
-// 		const wordsAns = await prompt([
-// 			list('Words', 'Words', [
-// 				{ name: 'N5', value: 'n5' },
-// 				{ name: 'N4', value: 'n4' },
-// 				{ name: 'N3', value: 'n3' },
-// 				{ name: 'N2', value: 'n2' },
-// 				{ name: 'N1', value: 'n1' },
-// 				{ name: 'Return', value: 'return' }
-// 			])
-// 		])
-// 		if (wordsAns.Words === 'return') {
-// 			options.exercise()
-// 			return
-// 		}
-// 		words(wordsAns.Words)
-// 	}
-// }
+export class CharactersTableQuestion implements IQuestion {
+    public name: QuestionName;
+
+    constructor() {
+        this.name = QuestionName.CharactersTable
+    }
+    question() {
+        return list(this.name, 'Characters Excercise', [
+            { name: QuestionName.Hiragana, value: QuestionName.Hiragana },
+            { name: QuestionName.Katakana, value: QuestionName.Katakana },
+            { name: HistoryName.Return, value: QuestionName.MainMenu }
+        ])
+    }
+}
+
+export class WordsQuestion implements IQuestion {
+    public name: QuestionName;
+
+    constructor() {
+        this.name = QuestionName.Words
+    }
+    question() {
+        return list(this.name, 'Words excercise', [
+            { name: QuestionName.N5, value: QuestionName.N5 },
+            { name: QuestionName.N4, value: QuestionName.N4 },
+            { name: QuestionName.N3, value: QuestionName.N3 },
+            { name: QuestionName.N2, value: QuestionName.N2 },
+            { name: QuestionName.N1, value: QuestionName.N1 },
+            { name: HistoryName.Return, value: QuestionName.MainMenu }
+        ])
+    }
+}

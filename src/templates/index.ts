@@ -13,24 +13,24 @@ const column = 'AKSTNHMYRWN'
 export const hiraganaLetters = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや－ゆ－よらりるれろわ－－－をん`
 export const katakanaLetters = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤ－ユ－ヨラリルレロワ－－－ヲン`
 
-// function lettersTemplate(table) {
-// 	return table
-// 		.split('')
-// 		.map(letter => {
-// 			return ` ${letter} |`
-// 		})
-// 		.map((letter, index) => {
-// 			if (index % 5 === 4) return `${letter}\n`
-// 			if (index % 5 === 0)
-// 				return `${column[Math.floor(index / 5)]} | ${letter}`
-// 			return letter
-// 		})
-// 		.join('')
-// }
+function lettersTemplate(table: string) {
+	return table
+		.split('')
+		.map(letter => {
+			return ` ${letter} |`
+		})
+		.map((letter, index) => {
+			if (index % 5 === 4) return `${letter}\n`
+			if (index % 5 === 0)
+				return `${column[Math.floor(index / 5)]} | ${letter}`
+			return letter
+		})
+		.join('')
+}
 
-// export const hiraganaTemplate = lettersTemplate(hiraganaLetters)
+export const hiraganaTemplate = lettersTemplate(hiraganaLetters)
 
-// export const katakanaTemplate = lettersTemplate(katakanaLetters)
+export const katakanaTemplate = lettersTemplate(katakanaLetters)
 
 export const hiraganaLettersTable = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん`
 export const katakanaLettersTable = `アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン`

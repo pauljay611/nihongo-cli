@@ -12,10 +12,10 @@ export class MenuQuestion implements IQuestion {
 	}
 	question() {
 		return list(this.name, 'Choose your lesson', [
-			// {
-			// 	name: 'Start your exercise',
-			// 	value: QuestionName.Excercise
-			// },
+			{
+				name: QuestionName.ExcerciseOptions,
+				value: QuestionName.ExcerciseOptions
+			},
 			// { name: 'Testing', value: QuestionName.Testing },
 			// { name: 'Record', value: QuestionName.Record },
 			{ name: HistoryName.Return, value: HistoryName.Return }

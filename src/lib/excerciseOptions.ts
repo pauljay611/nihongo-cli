@@ -42,3 +42,30 @@
 // 	},
 // 	record() { },
 // }
+
+import { IQuestion, QuestionName, HistoryName } from '../types'
+import { list } from '../utils';
+
+export class ExcerciseOptionsQuestion implements IQuestion {
+    public name: QuestionName;
+
+    constructor() {
+        this.name = QuestionName.ExcerciseOptions
+    }
+    question() {
+        return list(this.name, 'Choose your exercise', [
+            {
+                name: QuestionName.CharactersTable,
+                value: QuestionName.CharactersTable
+            },
+            {
+                name: QuestionName.Words,
+                value: QuestionName.Words
+            },
+            {
+                name: HistoryName.Return,
+                value: HistoryName.Return
+            },
+        ])
+    }
+}

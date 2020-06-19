@@ -20,12 +20,16 @@ export interface IQuestion {
 export enum QuestionName {
     Opening = 'Opening',
     MainMenu = "MainMenu",
-    // Katakana = 'Katakana',
-    // N5 = 'N5',
-    // N4 = 'N4',
-    // N3 = 'N3',
-    // N2 = 'N2',
-    // N1 = 'N1',
+    ExcerciseOptions = "ExcerciseOptions",
+    CharactersTable = "CharactersTable",
+    Hiragana = 'Hiragana',
+    Katakana = 'Katakana',
+    Words = "Words",
+    N5 = "N5",
+    N4 = "N4",
+    N3 = "N3",
+    N2 = "N2",
+    N1 = "N1"
 }
 
 export enum HistoryName {
