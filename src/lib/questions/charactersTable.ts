@@ -1,6 +1,6 @@
-import { rows, hiraganaTemplate, katakanaTemplate } from '../templates';
-import { IQuestion, QuestionName, HistoryName } from '../types'
-import { list } from '../utils';
+import { rows, hiraganaTemplate, katakanaTemplate } from '../../templates';
+import { IQuestion, QuestionName, HistoryName } from '../../types'
+import { list } from '../../utils';
 
 export class HiraganaQuestion implements IQuestion {
     public name: QuestionName;

@@ -43,8 +43,8 @@
 // 	record() { },
 // }
 
-import { IQuestion, QuestionName, HistoryName } from '../types'
-import { list } from '../utils';
+import { IQuestion, QuestionName, HistoryName } from '../../types'
+import { list } from '../../utils';
 
 export class ExcerciseOptionsQuestion implements IQuestion {
     public name: QuestionName;

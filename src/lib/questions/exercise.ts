@@ -1,5 +1,5 @@
-import { IQuestion, QuestionName, HistoryName } from '../types'
-import { list } from '../utils';
+import { IQuestion, QuestionName, HistoryName } from '../../types'
+import { list } from '../../utils';
 
 export class CharactersTableQuestion implements IQuestion {
     public name: QuestionName;

@@ -1,11 +1,8 @@
-import { QuestionName, HistoryName, QuestionList } from '../types'
-import { OpeningQuestion } from './openning'
-import { MenuQuestion } from './menu'
-import { ExcerciseOptionsQuestion } from './excerciseOptions'
+import { QuestionName, HistoryName, QuestionList, JlptLevel } from '../types'
 import { Subject } from 'rxjs'
 import inquirer = require('inquirer')
-import { exit } from '../utils'
-import { CharactersTableQuestion, HiraganaQuestion, KatakanaQuestion } from './exercise'
+import { exit, input } from '../utils'
+import { CharactersTableQuestion, HiraganaQuestion, KatakanaQuestion, ExcerciseOptionsQuestion, MenuQuestion, OpeningQuestion, JlptWordsQuestion, WordsQuestion, EnterPage } from './questions'
 
 export class QuestionHandler {
 
@@ -18,6 +15,13 @@ export class QuestionHandler {
     [QuestionName.CharactersTable]: new CharactersTableQuestion(),
     [QuestionName.Hiragana]: new HiraganaQuestion(),
     [QuestionName.Katakana]: new KatakanaQuestion(),
+    [QuestionName.Words]: new WordsQuestion(),
+    [QuestionName.N1]: new JlptWordsQuestion(QuestionName.N1, JlptLevel.N1),
+    [QuestionName.N2]: new JlptWordsQuestion(QuestionName.N2, JlptLevel.N2),
+    [QuestionName.N3]: new JlptWordsQuestion(QuestionName.N3, JlptLevel.N3),
+    [QuestionName.N4]: new JlptWordsQuestion(QuestionName.N4, JlptLevel.N4),
+    [QuestionName.N5]: new JlptWordsQuestion(QuestionName.N5, JlptLevel.N5),
+    [QuestionName.ENTER_PAGE]: new EnterPage(),
   }
 
   constructor() {
@@ -37,7 +41,20 @@ export class QuestionHandler {
         if (answer === HistoryName.Return) {
           answer = this.history.pop()
         }
-        console.log(answer, this.currentQuestion, this.history)
+
+        // JLPT test operation
+        if (answer === HistoryName.NEXT) {
+          this.questionList[this.currentQuestion].page = (this.questionList[this.currentQuestion].page ?? 0) + 1
+          prompts.next(this.questionList[this.currentQuestion].question())
+          return
+        }
+        // TODO: fix bug 
+        if (!isNaN(+answer)) {
+          this.questionList[this.currentQuestion].page = +answer
+          prompts.next(this.questionList[this.history.pop() ?? QuestionName.MainMenu].question())
+          return
+        }
+
         this.history.push(this.currentQuestion)
         this.currentQuestion = answer
         prompts.next(this.questionList[this.currentQuestion].question())

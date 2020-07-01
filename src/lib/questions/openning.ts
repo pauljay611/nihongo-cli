@@ -1,6 +1,6 @@
 import chalk from 'chalk'
-import { IQuestion, QuestionName } from '../types'
-import { welcome } from "../templates";
+import { IQuestion, QuestionName } from '../../types'
+import { welcome } from "../../templates";
 export class OpeningQuestion implements IQuestion {
     public name: QuestionName;
 
