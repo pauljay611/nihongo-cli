@@ -1,5 +1,5 @@
-import { QuestionHandler } from './lib'
+import { QuestionHandler } from './lib';
 
 export async function cli() {
-	new QuestionHandler()
+    new QuestionHandler();
 }

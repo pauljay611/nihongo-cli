@@ -1,38 +1,42 @@
-import inquirer from 'inquirer'
-import { Answer, Choices, HistoryName } from '../types'
+import inquirer from 'inquirer';
+import { Questions, Choices, QuestionName } from '../types';
 
 export const reset = () => {
-	process.stdout.write('\x1bc')
-}
+    process.stdout.write('\x1bc');
+};
 
 export const exit = () => {
-	console.log('Good bye~')
-	process.stdin.pause()
-}
+    console.log('Good bye~');
+    process.stdin.pause();
+};
 
 export const prompt = (message: inquirer.QuestionCollection) => {
-	reset()
-	return inquirer.prompt(message)
-}
+    reset();
+    return inquirer.prompt(message);
+};
 
-export const list = (name: string, message: string, choices: Choices[]): Answer => {
-	return {
-		type: 'list',
-		name,
-		message,
-		choices: [
-			new inquirer.Separator(),
-			...choices,
-			new inquirer.Separator(),
-			{ name: 'Exit', value: HistoryName.Exit } as Choices
-		]
-	}
-}
+export const list = (
+    name: string,
+    message: string,
+    choices: Choices[]
+): Questions => {
+    return {
+        type: 'list',
+        name,
+        message,
+        choices: [
+            new inquirer.Separator(),
+            ...choices,
+            new inquirer.Separator(),
+            { name: 'Exit', value: QuestionName.Opening } as Choices
+        ]
+    };
+};
 
 export const input = (name: string, message: string) => {
-	return {
-		type: 'input',
-		name,
-		message
-	}
-}
+    return {
+        type: 'input',
+        name,
+        message
+    };
+};

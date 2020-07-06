@@ -1,24 +1,36 @@
 // import { IQuestion, QuestionName } from '../../types';
-// import { list } from '../../utils';
+// import { list, exit } from '../../utils';
 // import { QuestionHistory, questionList } from '../models';
 
-// export class CharactersTableQuestion implements IQuestion {
+// export class Return implements IQuestion {
 //     public name: QuestionName;
-//     question = list(this.name, 'Characters Excercise', [
-//         { name: QuestionName.Hiragana, value: QuestionName.Hiragana },
-//         { name: QuestionName.Katakana, value: QuestionName.Katakana },
-//         { name: QuestionName.Return, value: QuestionName.MainMenu }
-//     ]);
+
+//     question = QuestionHistory.get().question;
 
 //     constructor() {
-//         this.name = QuestionName.CharactersTable;
+//         this.name = QuestionName.Return;
 //     }
 //     run(answer: QuestionName) {
 //         QuestionHistory.next(questionList[answer].question);
 //     }
 // }
 
-// export class WordsQuestion implements IQuestion {
+// export class Exit implements IQuestion {
+//     public name: QuestionName;
+//     question = {
+//         type: 'confirm',
+//         name: QuestionName.Exit,
+//         message: 'Exit?'
+//     };
+//     constructor() {
+//         this.name = QuestionName.Exit;
+//     }
+//     run() {
+//         exit();
+//     }
+// }
+
+// export class Next implements IQuestion {
 //     public name: QuestionName;
 //     question = list(this.name, 'Words excercise', [
 //         { name: QuestionName.N5, value: QuestionName.N5 },

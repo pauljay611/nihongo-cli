@@ -1,6 +1,7 @@
-export * from './charactersTable'
-export * from './excerciseOptions'
-export * from './exercise'
-export * from './menu'
-export * from './openning'
-export * from './words'
+export * from './openning';
+// export * from './charactersTable';
+// export * from './excerciseOptions';
+// export * from './exercise';
+export * from './menu';
+// export * from './words';
+// export * from './history';
