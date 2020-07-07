@@ -1,6 +1,6 @@
-// import { IQuestion, QuestionName } from '../../types';
-// import { list, exit } from '../../utils';
-// import { QuestionHistory, questionList } from '../models';
+import { IQuestion, QuestionName } from '../../types';
+import { list, exit } from '../../utils';
+import { QuestionHistory, questionList } from '../models';
 
 // export class Return implements IQuestion {
 //     public name: QuestionName;
@@ -15,20 +15,20 @@
 //     }
 // }
 
-// export class Exit implements IQuestion {
-//     public name: QuestionName;
-//     question = {
-//         type: 'confirm',
-//         name: QuestionName.Exit,
-//         message: 'Exit?'
-//     };
-//     constructor() {
-//         this.name = QuestionName.Exit;
-//     }
-//     run() {
-//         exit();
-//     }
-// }
+export class Exit implements IQuestion {
+    public name = QuestionName.Exit;
+    question = {
+        type: 'confirm',
+        name: QuestionName.Exit,
+        message: 'Exit?'
+    };
+    constructor() {
+        this.name = QuestionName.Exit;
+    }
+    run() {
+        exit();
+    }
+}
 
 // export class Next implements IQuestion {
 //     public name: QuestionName;

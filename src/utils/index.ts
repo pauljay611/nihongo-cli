@@ -28,7 +28,7 @@ export const list = (
             new inquirer.Separator(),
             ...choices,
             new inquirer.Separator(),
-            { name: 'Exit', value: QuestionName.Opening } as Choices
+            { name: 'Exit', value: QuestionName.Exit } as Choices
         ]
     };
 };

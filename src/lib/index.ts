@@ -1,5 +1,7 @@
 import inquirer = require('inquirer');
+import chalk from 'chalk';
 
+import { welcome } from '../templates';
 import { QuestionName } from '../types';
 import { questionList, QuestionHistory } from './models';
 
@@ -9,6 +11,7 @@ export class QuestionHandler {
     }
 
     init() {
+        console.log(chalk.blue(welcome));
         inquirer
             .prompt(QuestionHistory.prompts as inquirer.QuestionCollection)
             .ui.process.subscribe(

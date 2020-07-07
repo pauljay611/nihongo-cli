@@ -20,11 +20,11 @@ export class QuestionHistory {
 // Models
 export const questionList = {
     [QuestionName.Opening]: new questions.OpeningQuestion(),
-    [QuestionName.MainMenu]: new questions.MenuQuestion()
-    // [QuestionName.ExcerciseOptions]: new questions.ExcerciseOptionsQuestion(),
-    // [QuestionName.CharactersTable]: new questions.CharactersTableQuestion(),
-    // [QuestionName.Hiragana]: new questions.HiraganaQuestion(),
-    // [QuestionName.Katakana]: new questions.KatakanaQuestion(),
+    [QuestionName.MainMenu]: new questions.MenuQuestion(),
+    [QuestionName.ExcerciseOptions]: new questions.ExcerciseOptionsQuestion(),
+    [QuestionName.CharactersTable]: new questions.CharactersTableQuestion(),
+    [QuestionName.Hiragana]: new questions.HiraganaQuestion(),
+    [QuestionName.Katakana]: new questions.KatakanaQuestion(),
     // [QuestionName.Words]: new questions.WordsQuestion(),
     // [QuestionName.N1]: new questions.JlptWordsQuestion(
     //     QuestionName.N1,
@@ -49,5 +49,5 @@ export const questionList = {
     // [QuestionName.ENTER_PAGE]: new questions.EnterPage(),
     // [QuestionName.NEXT]: new questions.Next(),
     // [QuestionName.Return]: new questions.Return(),
-    // [QuestionName.Exit]: new questions.Exit()
+    [QuestionName.Exit]: new questions.Exit()
 };

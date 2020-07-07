@@ -6,8 +6,8 @@ export class MenuQuestion implements IQuestion {
     public name = QuestionName.MainMenu;
     question = list(this.name, 'Choose your lesson', [
         {
-            name: QuestionName.Opening,
-            value: QuestionName.Opening
+            name: QuestionName.ExcerciseOptions,
+            value: QuestionName.ExcerciseOptions
         },
         // { name: 'Testing', value: QuestionName.Testing },
         // { name: 'Record', value: QuestionName.Record },

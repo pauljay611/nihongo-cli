@@ -20,11 +20,11 @@ export interface IQuestion {
 
 export enum QuestionName {
     Opening = 'Opening',
-    MainMenu = 'MainMenu'
-    // ExcerciseOptions = 'ExcerciseOptions',
-    // CharactersTable = 'CharactersTable',
-    // Hiragana = 'Hiragana',
-    // Katakana = 'Katakana',
+    MainMenu = 'MainMenu',
+    ExcerciseOptions = 'ExcerciseOptions',
+    CharactersTable = 'CharactersTable',
+    Hiragana = 'Hiragana',
+    Katakana = 'Katakana',
     // Words = 'Words',
     // N5 = 'N5',
     // N4 = 'N4',
@@ -34,7 +34,7 @@ export enum QuestionName {
     // // ENTER_PAGE = 'ENTER_PAGE',
     // Return = 'Return',
     // // NEXT = 'NEXT',
-    // Exit = 'Exit'
+    Exit = 'Exit'
 }
 
 export type QuestionList = {

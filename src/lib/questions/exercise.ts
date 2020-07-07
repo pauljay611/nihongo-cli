@@ -1,22 +1,34 @@
-// import { IQuestion, QuestionName } from '../../types';
-// import { list } from '../../utils';
-// import { QuestionHistory, questionList } from '../models';
+import { IQuestion, QuestionName } from '../../types';
+import { list } from '../../utils';
+import { QuestionHistory, questionList } from '../models';
+import { rows, hiraganaTemplate, katakanaTemplate } from '../../templates';
 
-// export class CharactersTableQuestion implements IQuestion {
-//     public name: QuestionName;
-//     question = list(this.name, 'Characters Excercise', [
-//         { name: QuestionName.Hiragana, value: QuestionName.Hiragana },
-//         { name: QuestionName.Katakana, value: QuestionName.Katakana },
-//         { name: QuestionName.Return, value: QuestionName.MainMenu }
-//     ]);
+export class CharactersTableQuestion implements IQuestion {
+    public name = QuestionName.CharactersTable;
+    question = list(this.name, 'Characters Excercise', [
+        { name: QuestionName.Hiragana, value: QuestionName.Hiragana },
+        { name: QuestionName.Katakana, value: QuestionName.Katakana },
+        { name: QuestionName.Opening, value: QuestionName.MainMenu }
+    ]);
 
-//     constructor() {
-//         this.name = QuestionName.CharactersTable;
-//     }
-//     run(answer: QuestionName) {
-//         QuestionHistory.next(questionList[answer].question);
-//     }
-// }
+    run(answer: QuestionName) {
+        switch (answer) {
+            case QuestionName.Hiragana:
+                console.log('-----------------------------');
+                console.log(rows);
+                console.log(hiraganaTemplate);
+                console.log('-----------------------------');
+                break;
+            case QuestionName.Katakana:
+                console.log('-----------------------------');
+                console.log(rows);
+                console.log(katakanaTemplate);
+                console.log('-----------------------------');
+                break;
+        }
+        QuestionHistory.next(questionList[answer].question);
+    }
+}
 
 // export class WordsQuestion implements IQuestion {
 //     public name: QuestionName;

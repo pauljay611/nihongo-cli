@@ -1,35 +1,25 @@
-// import { rows, hiraganaTemplate, katakanaTemplate } from '../../templates';
-// import { IQuestion, QuestionName } from '../../types';
-// import { list } from '../../utils';
+import { IQuestion, QuestionName } from '../../types';
+import { list } from '../../utils';
+import { QuestionHistory, questionList } from '../models';
 
-// export class HiraganaQuestion implements IQuestion {
-//     public name: QuestionName;
-//     question = list(this.name, 'Characters Excercise', [
-//         { name: QuestionName.Return, value: QuestionName.Return }
-//     ]);
-//     constructor() {
-//         this.name = QuestionName.Hiragana;
-//     }
-//     run() {
-//         console.log('-----------------------------');
-//         console.log(rows);
-//         console.log(hiraganaTemplate);
-//         console.log('-----------------------------');
-//     }
-// }
+export class HiraganaQuestion implements IQuestion {
+    public name = QuestionName.Hiragana;
+    question = list(this.name, 'Hiragana Excercise', [
+        { name: QuestionName.MainMenu, value: QuestionName.MainMenu }
+    ]);
 
-// export class KatakanaQuestion implements IQuestion {
-//     public name: QuestionName;
-//     question = list(this.name, 'Characters Excercise', [
-//         { name: QuestionName.Return, value: QuestionName.Return }
-//     ]);
-//     constructor() {
-//         this.name = QuestionName.Katakana;
-//     }
-//     run() {
-//         console.log('-----------------------------');
-//         console.log(rows);
-//         console.log(katakanaTemplate);
-//         console.log('-----------------------------');
-//     }
-// }
+    run(answer: QuestionName) {
+        QuestionHistory.next(questionList[answer].question);
+    }
+}
+
+export class KatakanaQuestion implements IQuestion {
+    public name = QuestionName.Katakana;
+    question = list(this.name, 'Katakana Excercise', [
+        { name: QuestionName.Opening, value: QuestionName.Opening }
+    ]);
+
+    run(answer: QuestionName) {
+        QuestionHistory.next(questionList[answer].question);
+    }
+}
