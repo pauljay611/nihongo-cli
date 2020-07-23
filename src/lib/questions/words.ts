@@ -1,8 +1,11 @@
-import { IQuestion, QuestionName, JlptLevel, Questions } from '../../types';
+import { IQuestion, QuestionName, Questions } from '../../types';
 
 import { jpltApi } from '../../services/api';
 import { list, input } from '../../utils';
 import { QuestionHistory, questionList } from '../models';
+
+let curJLPT: QuestionName = QuestionName.N1;
+let curPage = 2;
 
 export const showWords = async (level: QuestionName, page: number) => {
     const words = await jpltApi(level, page);
@@ -15,7 +18,6 @@ export const showWords = async (level: QuestionName, page: number) => {
 
 export class JLPTWordsQuestion implements IQuestion {
     public name: QuestionName;
-    public page = 1;
     question: Questions;
 
     constructor(name: QuestionName) {
@@ -25,25 +27,28 @@ export class JLPTWordsQuestion implements IQuestion {
                 name: 'Next Page',
                 value: this.name
             },
-            { name: 'Enter Page Number', value: QuestionName.Opening }
+            { name: 'Enter Page Number', value: QuestionName.ENTER_PAGE }
             // { name: 'Return', value: QuestionName.Return }
         ]);
     }
     run(answer: QuestionName) {
-        showWords(answer, this.page);
-        this.page++;
+        showWords(answer, curPage);
+        curJLPT = this.name;
+        curPage++;
         QuestionHistory.next(questionList[answer].question);
     }
 }
 
-// export class EnterPage implements IQuestion {
-//     public name: QuestionName;
-//     question = input(this.name, 'Page Number');
+export class EnterPage implements IQuestion {
+    public name = QuestionName.ENTER_PAGE;
+    question = input(this.name, 'Page Number');
 
-//     constructor() {
-//         this.name = QuestionName.ENTER_PAGE;
-//     }
-//     run(answer: string) {
-//         QuestionHistory.next(questionList[answer].question);
-//     }
-// }
+    constructor() {
+        this.name = QuestionName.ENTER_PAGE;
+    }
+    run(answer: number) {
+        curPage = answer;
+        showWords(curJLPT, answer);
+        QuestionHistory.next(questionList[curJLPT].question);
+    }
+}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { JlptLevel, JlptResponse, QuestionName } from '../types';
+import { JlptResponse, QuestionName } from '../types';
 
 // Set config defaults when creating the instance
 const api = axios.create({

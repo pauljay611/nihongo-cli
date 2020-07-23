@@ -31,23 +31,14 @@ export enum QuestionName {
     N3 = 'n3',
     N2 = 'n2',
     N1 = 'n1',
-    // // ENTER_PAGE = 'ENTER_PAGE',
+    ENTER_PAGE = 'ENTER_PAGE',
     // Return = 'Return',
-    // // NEXT = 'NEXT',
     Exit = 'Exit'
 }
 
 export type QuestionList = {
     [name in QuestionName]: IQuestion;
 };
-
-export enum JlptLevel {
-    N1 = 'n1',
-    N2 = 'n2',
-    N3 = 'n3',
-    N4 = 'n4',
-    N5 = 'n5'
-}
 
 export interface JlptResponse {
     meta: {

@@ -1,4 +1,4 @@
-export * from './openning';
+export * from './opening';
 export * from './charactersTable';
 export * from './excerciseOptions';
 export * from './exercise';

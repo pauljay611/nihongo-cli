@@ -1,4 +1,4 @@
-import { IQuestion, QuestionName, JlptLevel, Questions } from '../../types';
+import { IQuestion, QuestionName, Questions } from '../../types';
 import * as questions from '../questions';
 import { Subject } from 'rxjs';
 
@@ -28,6 +28,7 @@ const N2 = new questions.JLPTWordsQuestion(QuestionName.N2);
 const N3 = new questions.JLPTWordsQuestion(QuestionName.N3);
 const N4 = new questions.JLPTWordsQuestion(QuestionName.N4);
 const N5 = new questions.JLPTWordsQuestion(QuestionName.N5);
+const EnterPage = new questions.EnterPage();
 const Exit = new questions.Exit();
 // Models
 export const questionList = {
@@ -43,8 +44,7 @@ export const questionList = {
     [QuestionName.N3]: N3,
     [QuestionName.N4]: N4,
     [QuestionName.N5]: N5,
-    // [QuestionName.ENTER_PAGE]: new questions.EnterPage(),
-    // [QuestionName.NEXT]: new questions.Next(),
+    [QuestionName.ENTER_PAGE]: EnterPage,
     // [QuestionName.Return]: new questions.Return(),
     [QuestionName.Exit]: Exit
 };

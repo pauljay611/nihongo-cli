@@ -29,22 +29,3 @@ export class Exit implements IQuestion {
         exit();
     }
 }
-
-// export class Next implements IQuestion {
-//     public name: QuestionName;
-//     question = list(this.name, 'Words excercise', [
-//         { name: QuestionName.N5, value: QuestionName.N5 },
-//         { name: QuestionName.N4, value: QuestionName.N4 },
-//         { name: QuestionName.N3, value: QuestionName.N3 },
-//         { name: QuestionName.N2, value: QuestionName.N2 },
-//         { name: QuestionName.N1, value: QuestionName.N1 },
-//         { name: QuestionName.Return, value: QuestionName.MainMenu }
-//     ]);
-
-//     constructor() {
-//         this.name = QuestionName.Words;
-//     }
-//     run(answer: QuestionName) {
-//         QuestionHistory.next(questionList[answer].question);
-//     }
-// }
