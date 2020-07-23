@@ -53,13 +53,13 @@ export class ExcerciseOptionsQuestion implements IQuestion {
             name: QuestionName.CharactersTable,
             value: QuestionName.CharactersTable
         },
-        // {
-        //     name: QuestionName.Words,
-        //     value: QuestionName.Words
-        // },
         {
-            name: QuestionName.Opening,
-            value: QuestionName.Opening
+            name: QuestionName.Words,
+            value: QuestionName.Words
+        },
+        {
+            name: QuestionName.MainMenu,
+            value: QuestionName.MainMenu
         }
     ]);
 

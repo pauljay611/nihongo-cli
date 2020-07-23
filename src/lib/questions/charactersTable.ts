@@ -16,7 +16,7 @@ export class HiraganaQuestion implements IQuestion {
 export class KatakanaQuestion implements IQuestion {
     public name = QuestionName.Katakana;
     question = list(this.name, 'Katakana Excercise', [
-        { name: QuestionName.Opening, value: QuestionName.Opening }
+        { name: QuestionName.MainMenu, value: QuestionName.MainMenu }
     ]);
 
     run(answer: QuestionName) {

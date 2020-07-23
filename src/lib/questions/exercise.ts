@@ -2,13 +2,13 @@ import { IQuestion, QuestionName } from '../../types';
 import { list } from '../../utils';
 import { QuestionHistory, questionList } from '../models';
 import { rows, hiraganaTemplate, katakanaTemplate } from '../../templates';
-
+import { showWords } from './words';
 export class CharactersTableQuestion implements IQuestion {
     public name = QuestionName.CharactersTable;
     question = list(this.name, 'Characters Excercise', [
         { name: QuestionName.Hiragana, value: QuestionName.Hiragana },
         { name: QuestionName.Katakana, value: QuestionName.Katakana },
-        { name: QuestionName.Opening, value: QuestionName.MainMenu }
+        { name: QuestionName.MainMenu, value: QuestionName.MainMenu }
     ]);
 
     run(answer: QuestionName) {
@@ -30,21 +30,19 @@ export class CharactersTableQuestion implements IQuestion {
     }
 }
 
-// export class WordsQuestion implements IQuestion {
-//     public name: QuestionName;
-//     question = list(this.name, 'Words excercise', [
-//         { name: QuestionName.N5, value: QuestionName.N5 },
-//         { name: QuestionName.N4, value: QuestionName.N4 },
-//         { name: QuestionName.N3, value: QuestionName.N3 },
-//         { name: QuestionName.N2, value: QuestionName.N2 },
-//         { name: QuestionName.N1, value: QuestionName.N1 },
-//         { name: QuestionName.Return, value: QuestionName.MainMenu }
-//     ]);
+export class WordsQuestion implements IQuestion {
+    public name = QuestionName.Words;
+    question = list(this.name, 'Words excercise', [
+        { name: QuestionName.N5, value: QuestionName.N5 },
+        { name: QuestionName.N4, value: QuestionName.N4 },
+        { name: QuestionName.N3, value: QuestionName.N3 },
+        { name: QuestionName.N2, value: QuestionName.N2 },
+        { name: QuestionName.N1, value: QuestionName.N1 },
+        { name: QuestionName.MainMenu, value: QuestionName.MainMenu }
+    ]);
 
-//     constructor() {
-//         this.name = QuestionName.Words;
-//     }
-//     run(answer: QuestionName) {
-//         QuestionHistory.next(questionList[answer].question);
-//     }
-// }
+    run(answer: QuestionName) {
+        showWords(answer, 1);
+        QuestionHistory.next(questionList[answer].question);
+    }
+}

@@ -16,38 +16,35 @@ export class QuestionHistory {
         this.prompts.next(question);
     }
 }
-
+const Opening = new questions.OpeningQuestion();
+const Menu = new questions.MenuQuestion();
+const ExcerciseOptions = new questions.ExcerciseOptionsQuestion();
+const CharactersTable = new questions.CharactersTableQuestion();
+const Hiragana = new questions.HiraganaQuestion();
+const Katakana = new questions.KatakanaQuestion();
+const Words = new questions.WordsQuestion();
+const N1 = new questions.JLPTWordsQuestion(QuestionName.N1);
+const N2 = new questions.JLPTWordsQuestion(QuestionName.N2);
+const N3 = new questions.JLPTWordsQuestion(QuestionName.N3);
+const N4 = new questions.JLPTWordsQuestion(QuestionName.N4);
+const N5 = new questions.JLPTWordsQuestion(QuestionName.N5);
+const Exit = new questions.Exit();
 // Models
 export const questionList = {
-    [QuestionName.Opening]: new questions.OpeningQuestion(),
-    [QuestionName.MainMenu]: new questions.MenuQuestion(),
-    [QuestionName.ExcerciseOptions]: new questions.ExcerciseOptionsQuestion(),
-    [QuestionName.CharactersTable]: new questions.CharactersTableQuestion(),
-    [QuestionName.Hiragana]: new questions.HiraganaQuestion(),
-    [QuestionName.Katakana]: new questions.KatakanaQuestion(),
-    // [QuestionName.Words]: new questions.WordsQuestion(),
-    // [QuestionName.N1]: new questions.JlptWordsQuestion(
-    //     QuestionName.N1,
-    //     JlptLevel.N1
-    // ),
-    // [QuestionName.N2]: new questions.JlptWordsQuestion(
-    //     QuestionName.N2,
-    //     JlptLevel.N2
-    // ),
-    // [QuestionName.N3]: new questions.JlptWordsQuestion(
-    //     QuestionName.N3,
-    //     JlptLevel.N3
-    // ),
-    // [QuestionName.N4]: new questions.JlptWordsQuestion(
-    //     QuestionName.N4,
-    //     JlptLevel.N4
-    // ),
-    // [QuestionName.N5]: new questions.JlptWordsQuestion(
-    //     QuestionName.N5,
-    //     JlptLevel.N5
-    // ),
+    [QuestionName.Opening]: Opening,
+    [QuestionName.MainMenu]: Menu,
+    [QuestionName.ExcerciseOptions]: ExcerciseOptions,
+    [QuestionName.CharactersTable]: CharactersTable,
+    [QuestionName.Hiragana]: Hiragana,
+    [QuestionName.Katakana]: Katakana,
+    [QuestionName.Words]: Words,
+    [QuestionName.N1]: N1,
+    [QuestionName.N2]: N2,
+    [QuestionName.N3]: N3,
+    [QuestionName.N4]: N4,
+    [QuestionName.N5]: N5,
     // [QuestionName.ENTER_PAGE]: new questions.EnterPage(),
     // [QuestionName.NEXT]: new questions.Next(),
     // [QuestionName.Return]: new questions.Return(),
-    [QuestionName.Exit]: new questions.Exit()
+    [QuestionName.Exit]: Exit
 };
